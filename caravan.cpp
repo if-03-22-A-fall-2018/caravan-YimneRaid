@@ -69,10 +69,13 @@ void add_pack_animal(Caravan caravan, PackAnimal animal)
     if (get_caravan(animal)!=0) {
       remove_from_caravan(animal,get_caravan(animal));
     }
-    
+    animal->caravan=caravan;
+    Node* newNode=(Node*)malloc(sizeof(Node));
+
+    newNode->pack_animal=animal;
+    newNode->next=caravan->head;
   }
 
-  return;
 }
 
 void remove_pack_animal(Caravan caravan, PackAnimal animal)
