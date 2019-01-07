@@ -12,9 +12,10 @@
 */
 #include "caravan.h"
 #include "stdlib.h"
-typedef struct _node{
+
+typedef struct Node{
   PackAnimal pack_animal;
-  struct _node* next;
+  struct Node* next;
 }Node;
 
 struct CaravanImplementation{
@@ -38,12 +39,18 @@ Caravan new_caravan()
 
 int get_length(Caravan caravan)
 {
-
-  return 0;
+  int count=0;
+  Node* currentnode=caravan->head;
+  while(currentnode!=0){
+    currentnode=currentnode->next;
+    count ++;
+  }
+  return count;
 }
 
 void delete_caravan(Caravan caravan)
 {
+  
   return;
 }
 
