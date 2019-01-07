@@ -12,7 +12,7 @@
 */
 #include "caravan.h"
 #include "stdlib.h"
-
+#include "general.h"
 typedef struct Node{
   PackAnimal pack_animal;
   struct Node* next;
@@ -50,12 +50,28 @@ int get_length(Caravan caravan)
 
 void delete_caravan(Caravan caravan)
 {
-  
-  return;
+  int caravanLength=get_length(caravan);
+  for ( int i = 0; i < caravanLength; i++) {
+    Node* head=caravan->head;
+    caravan->head=head->next;
+    sfree(caravan->head);
+  }
+  sfree(caravan);
 }
 
 void add_pack_animal(Caravan caravan, PackAnimal animal)
 {
+  if (animal==0) {
+    return;
+  }
+  else
+  {
+    if (get_caravan(animal)!=0) {
+      remove_from_caravan(animal,get_caravan(animal));
+    }
+    
+  }
+
   return;
 }
 
@@ -66,7 +82,7 @@ void remove_pack_animal(Caravan caravan, PackAnimal animal)
 
 int get_caravan_load(Caravan caravan)
 {
-  return 0;
+  return get_length(caravan);
 }
 
 void unload(Caravan caravan)
