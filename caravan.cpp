@@ -75,7 +75,6 @@ void add_pack_animal(Caravan caravan, PackAnimal animal)
     newNode->pack_animal=animal;
     newNode->next=caravan->head;
   }
-
 }
 
 void remove_pack_animal(Caravan caravan, PackAnimal animal)
